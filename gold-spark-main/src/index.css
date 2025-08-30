@@ -1,0 +1,214 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Professional LLM Evaluation Interface Design System */
+
+@layer base {
+  :root {
+    /* Core palette - Professional blues and purples */
+    --background: 220 20% 98%;
+    --foreground: 220 13% 18%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 13% 18%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 13% 18%;
+
+    /* Primary - Deep professional blue */
+    --primary: 233 47% 25%;
+    --primary-foreground: 0 0% 98%;
+    --primary-hover: 233 47% 30%;
+
+    /* Secondary - Light blue-gray */
+    --secondary: 220 20% 95%;
+    --secondary-foreground: 220 13% 25%;
+
+    --muted: 220 20% 96%;
+    --muted-foreground: 220 8% 46%;
+
+    /* Accent - Vibrant evaluation blue */
+    --accent: 233 84% 60%;
+    --accent-foreground: 0 0% 98%;
+
+    /* Evaluation status colors */
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 98%;
+    --success-light: 142 71% 95%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 98%;
+    --warning-light: 38 92% 95%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --destructive-light: 0 84% 95%;
+
+    /* Analysis colors */
+    --match: 142 71% 45%;
+    --match-light: 142 71% 95%;
+    --conflict: 0 84% 60%;
+    --conflict-light: 0 84% 95%;
+    --neutral: 220 8% 60%;
+    --neutral-light: 220 8% 95%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 233 84% 60%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(233, 47%, 25%), hsl(233, 84%, 60%));
+    --gradient-evaluation: linear-gradient(90deg, hsl(142, 71%, 45%), hsl(38, 92%, 50%), hsl(0, 84%, 60%));
+    --gradient-card: linear-gradient(145deg, hsl(0, 0%, 100%), hsl(220, 20%, 98%));
+
+    /* Shadows */
+    --shadow-card: 0 4px 12px -2px hsl(220, 13%, 18%, 0.08);
+    --shadow-elevated: 0 8px 30px -8px hsl(220, 13%, 18%, 0.15);
+    --shadow-focus: 0 0 0 3px hsl(233, 84%, 60%, 0.2);
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  /* Custom scrollbars */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--accent));
+  }
+}
+
+@layer components {
+  /* Card enhancements */
+  .card-elevated {
+    box-shadow: var(--shadow-elevated);
+  }
+
+  .card-gradient {
+    background: var(--gradient-card);
+  }
+
+  /* Evaluation status indicators */
+  .status-match {
+    @apply bg-match-light text-match border-match/20;
+  }
+
+  .status-conflict {
+    @apply bg-conflict-light text-conflict border-conflict/20;
+  }
+
+  .status-neutral {
+    @apply bg-neutral-light text-neutral border-neutral/20;
+  }
+
+  /* Gradient text */
+  .text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Focus enhancements */
+  .focus-enhanced:focus {
+    box-shadow: var(--shadow-focus);
+  }
+
+  /* Code blocks */
+  .code-block {
+    @apply bg-muted/50 border border-border rounded-lg p-4 font-mono text-sm overflow-x-auto;
+  }
+
+  /* JSON syntax highlighting */
+  .json-key {
+    @apply text-accent font-medium;
+  }
+
+  .json-string {
+    @apply text-success;
+  }
+
+  .json-number {
+    @apply text-warning;
+  }
+
+  .json-boolean {
+    @apply text-destructive;
+  }
+}
