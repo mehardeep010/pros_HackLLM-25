@@ -1,10 +1,6 @@
 # KGGuard: Semantic Fidelity Graph-Enhanced Hallucination Detection
 
-[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/release/python-380/)
-[![PyTorch](https://img.shields.io/badge/PyTorch-2.1.0-red.svg)](https://pytorch.org/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
-**HackLLM'25 ESYA**
+**1st Place- HackLLM ESYA’25 @ IIIT-D among 1035 participants**
 
 Detects hallucinations in LLM outputs by converting text into knowledge graphs and analyzing them with Graph Neural Networks.
 
@@ -28,13 +24,11 @@ Works with any LLM. No model modification needed.
 git clone https://github.com/pros/kgguard.git
 cd kgguard
 
-# Core dependencies 
 pip install "numpy<2.0"
 pip install torch==2.1.0 torch_geometric==2.4.0 --extra-index-url https://data.pyg.org/whl/torch-2.1.0+cu121.html
 pip install transformers==4.31.0 datasets==2.15.0 peft==0.5.0 accelerate==0.25.0
 pip install sentence-transformers==2.3.1 spacy==3.7.2 PyDictionary==2.0.1 tqdm
 
-# Language model
 python -m spacy download en_core_web_sm
 ```
 
@@ -83,7 +77,6 @@ print(f"Score: {result['score']:.4f}")
 
 **GNN Model:**
 ```python
-# Two-layer GATv2 (Graph Attention Network)
 Layer 1: GATv2Conv(encoder_dim → hidden_dim, 2 heads)
 Layer 2: GATv2Conv(hidden_dim*2 → output_dim, 1 head)
 Predictor: Linear layers → hallucination score
